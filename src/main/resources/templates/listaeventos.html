@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ListaVIP</title>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="container">
+
+		<div id="listaDeEventos">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Descrição</th>
+						<th>Texto email</th>
+					</tr>
+				</thead>
+				<tr th:each="evento : ${eventos}">
+					<td class="eventoId"><span th:text="${evento.id}"></span></td>
+					<td><span th:text="${evento.descricao}"></span></td>
+					<td><span th:text="${evento.email}"></span></td>
+					<td><a href="listaconvidados?idEvento=" class="linkLista" >Lista de Convidados</a></td>
+				</tr>
+			</table>
+		</div>
+
+		<hr />
+
+		<form action="salvarEvento" method="post">
+			<div class="form-group">
+				<label for="id">ID</label> 
+				<input type="number" value="" class="form-control" id="id" name="id" readonly="readonly" />
+			</div>
+			<div class="form-group">
+				<label for="descricao">Descrição do Evento</label> 
+				<input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição" />
+			</div>
+			<div class="form-group">
+				<label for="email">Texto do convite via E-mail</label> 
+				<input type="text" class="form-control" id="email" name="email" placeholder="Email" />
+			</div>
+			<button type="submit" class="btn-success">Salvar</button>
+		</form>
+
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/listaeventos.js"></script>
+
+</body>
+</html>
