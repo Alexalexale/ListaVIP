@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import listaconvidados.model.Evento;
+import listaconvidados.model.Eventos;
 import listaconvidados.service.EventoService;
 
 @Controller
@@ -27,7 +27,7 @@ public class EventoController {
 
 	@RequestMapping(value = "salvarEvento", method = RequestMethod.POST)
 	public String salvar(@RequestParam("id") BigInteger id, @RequestParam("email") String email, @RequestParam("descricao") String descricao, Model model) {
-		Evento novoEvento = new Evento(descricao, email);
+		Eventos novoEvento = new Eventos(descricao, email);
 		if (id != null) {
 			novoEvento.setId(id.longValue());
 		}
@@ -38,7 +38,7 @@ public class EventoController {
 
 	@RequestMapping(value = "findEvento", method = RequestMethod.POST)
 	@ResponseBody
-	public Evento findEvento(@RequestParam("id") long id) {
+	public Eventos findEvento(@RequestParam("id") long id) {
 		return eventoService.find(id);
 	}
 }

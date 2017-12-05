@@ -14,7 +14,7 @@ public class Convidado {
 	private String nome;
 	private String email;
 	private String telefone;
-	private Evento evento;
+	private Eventos eventos;
 
 	public Convidado() {
 
@@ -65,12 +65,12 @@ public class Convidado {
 
 	@ManyToOne
 	@JoinColumn
-	public Evento getEvento() {
-		return evento;
+	public Eventos getEvento() {
+		return eventos;
 	}
 
-	public void setEvento(Evento evento) {
-		this.evento = evento;
+	public void setEvento(Eventos evento) {
+		this.eventos = evento;
 	}
 
 }

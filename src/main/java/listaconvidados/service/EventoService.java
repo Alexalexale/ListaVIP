@@ -3,7 +3,7 @@ package listaconvidados.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import listaconvidados.model.Evento;
+import listaconvidados.model.Eventos;
 import listaconvidados.repository.EventoRepository;
 
 @Service
@@ -12,19 +12,19 @@ public class EventoService {
 	@Autowired
 	private EventoRepository repository;
 
-	public Iterable<Evento> obterTodos() {
+	public Iterable<Eventos> obterTodos() {
 
-		Iterable<Evento> convidados = repository.findAll();
+		Iterable<Eventos> convidados = repository.findAll();
 
 		return convidados;
 
 	}
 
-	public void salvar(Evento convidado) {
+	public void salvar(Eventos convidado) {
 		repository.save(convidado);
 	}
 
-	public Evento find(long id) {
+	public Eventos find(long id) {
 		return repository.findOne(id);
 	}
 }

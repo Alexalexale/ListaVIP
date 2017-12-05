@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import listaconvidados.model.Convidado;
-import listaconvidados.model.Evento;
+import listaconvidados.model.Eventos;
 import listaconvidados.service.ConvidadoService;
 import listaconvidados.service.EmailService;
 import listaconvidados.service.EventoService;
@@ -37,7 +37,7 @@ public class ConvidadoController {
 	@RequestMapping(value = "salvar", method = RequestMethod.POST)
 	public String salvar(@RequestParam("idEvento") String idEvento, @RequestParam("nome") String nome, @RequestParam("email") String email, @RequestParam("telefone") String telefone, Model model) {
 		Convidado novoConvidado = new Convidado(nome, email, telefone);
-		Evento evento = eventoService.find(Long.valueOf(idEvento));
+		Eventos evento = eventoService.find(Long.valueOf(idEvento));
 		novoConvidado.setEvento(evento);
 		convidadoService.salvar(novoConvidado);
 		new EmailService().enviar(nome, email, evento.getEmail());

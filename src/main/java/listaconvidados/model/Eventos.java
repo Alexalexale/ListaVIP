@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Evento implements Serializable {
+public class Eventos implements Serializable {
 
 	private static final long serialVersionUID = 1209918737477196722L;
 
@@ -20,11 +20,11 @@ public class Evento implements Serializable {
 	private String email;
 	private Set<Convidado> convidados;
 
-	public Evento() {
+	public Eventos() {
 
 	}
 
-	public Evento(String descricao, String email) {
+	public Eventos(String descricao, String email) {
 		this.descricao = descricao;
 		this.email = email;
 	}
